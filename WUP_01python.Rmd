@@ -7,14 +7,19 @@ date: "2022-10-12"
 ## Initial Setup
 
 ```{r initial-setup, eval=T, echo=FALSE, include=FALSE}
-install.packages('reticulate')
+#install.packages('reticulate')
 reticulate::virtualenv_create('testEnv')
 reticulate::use_virtualenv('testEnv')
 reticulate::virtualenv_install('testEnv', packages = 'numpy')
 reticulate::virtualenv_install('testEnv', packages = 'matplotlib')
 reticulate::virtualenv_install('testEnv', packages = 'pandas')
-reticulate::virtualenv_install('testEnv', packages = 'stats')
+reticulate::virtualenv_install('testEnv', packages = 'scipy')
+
+reticulate::virtualenv_install('testEnv', packages = 'plotnine')
+reticulate::virtualenv_install('testEnv', packages = 'dpython')
+#reticulate::virtualenv_install('testEnv', packages = 'sklearn')
 ```
+
 
 ## Setup Block
 ```{r setup, include=TRUE}
@@ -23,12 +28,6 @@ library(reticulate)
 reticulate::use_virtualenv('testEnv')
 ```
 
-```{python}
-import pandas as pd
-pushupsData = pd.read_csv('pushups.csv')
-type(pushupsData)
-pushupsData.columns
-```
 ## boxplot of pushups based on position
 ```{python}
 
@@ -39,6 +38,26 @@ pushupsData.boxplot(column='pushups',by= 'position')
 #print(f"positon: {pushupsData['position']}")
 ```
 This boxplot shows skill guys do more
+
+
+```{python}
+import pandas as pd
+from plotnine import ggplot, aes, geom_histogram, geom_boxplot
+  
+# reading dataset
+df = pd.read_csv("Iris.csv")
+  
+ggplot(df) + aes(x="SepalLengthCm") + geom_histogram()
+ggplot(df) + aes(x="Species", y="SepalLengthCm") + geom_boxplot()
+```
+
+```{python}
+from plotnine import geom_point
+ggplot(df) + aes(x="Species", y="SepalLengthCm") + geom_point()
+ggplot(df) + aes(x="Species", y="SepalWidthCm") + geom_boxplot()
+```
+
+
 
 ## numerical summary  
 ```{python}
