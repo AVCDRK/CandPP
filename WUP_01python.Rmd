@@ -52,8 +52,9 @@ ggplot(df) + aes(x="Species", y="SepalLengthCm") + geom_boxplot()
 ```
 
 ```{python}
-from plotnine import geom_point
-ggplot(df) + aes(x="Species", y="SepalLengthCm") + geom_point()
+#from plotnine import geom_point
+from plotnine import *
+ggplot(df) + aes(x="Species", y="SepalLengthCm") + geom_point() + geom_smooth(method='lm')
 ggplot(df) + aes(x="Species", y="SepalWidthCm") + geom_boxplot()
 ```
 
