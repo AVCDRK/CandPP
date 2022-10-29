@@ -1,5 +1,5 @@
 ---
-title: "WUP_04"
+title: "NUM~CAT anova"
 author: "Dr K"
 date: "fall 2020"
 output:
