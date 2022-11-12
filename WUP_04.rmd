@@ -95,7 +95,7 @@ pg.welch_anova(dv='WORDSUM', between='DEGREE', data=GSS)
 
 ```
 ```{python}
-pg.pairwise_gameshowell(dv='WORDSUM', between='DEGREE', data=GSS)
+
 pg.pairwise_tukey(dv='WORDSUM', between='DEGREE', data=GSS)
 ```
 
